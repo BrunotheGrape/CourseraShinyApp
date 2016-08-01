@@ -1,6 +1,6 @@
 #
 # 
-library(shiny); library(ggplot2)
+library(shiny); library(ggplot2); library(scales)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
@@ -32,9 +32,10 @@ shinyServer(function(input, output, session) {
      Plt <- c(a, b, c)     
  p <-   ggplot(WBGDP, aes(China, GDP, colour = Country, shape = Country, size = 4)) 
  p <- p + labs(title = "Selected Correlations", x = "China GDP in $ Millions", y = "Comparison GDP in $ Milliions")
- p <- p + theme(plot.title = element_text(face = "bold", size = 18))
+ p <- p + theme(plot.title = element_text(face = "bold", size = 20))
  p <- p + theme(axis.title = element_text(face = "bold", size = 16))
  p <- p + geom_point() + scale_color_manual(values = Plt)
+ p <- p + scale_x_continuous(labels = comma) + scale_y_continuous(labels = comma)
  p <- p + theme(panel.background = element_rect(fill = "#E5F5F9"))
  p <- p + geom_smooth(method = lm, size = 1, se = FALSE)
  
