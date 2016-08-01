@@ -5,7 +5,7 @@ library(shiny)
 options(digits = 12)
 # Define UI for application that draws a histogram
 shinyUI(pageWithSidebar(
-  headerPanel( "GDP correlations"),
+  headerPanel( "GDP Correlations"),
   sidebarPanel(
     checkboxInput("argentina", label = "Argentina", value = TRUE),
     checkboxInput("brazil", label = "Brazil", value = TRUE),
