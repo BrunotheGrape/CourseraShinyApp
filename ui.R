@@ -11,5 +11,8 @@ shinyUI(pageWithSidebar(
     checkboxInput("brazil", label = "Brazil", value = TRUE),
     checkboxInput("chile", label = "Chile", value = TRUE)
   ),
-  mainPanel(plotOutput('plot1'))
-))
+  mainPanel(
+    tabsetPanel(
+      tabPanel("How to Use This App", verbatimTextOutput("summary")),
+      tabPanel("plot", plotOutput('plot1'))
+))))
