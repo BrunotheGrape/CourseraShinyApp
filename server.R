@@ -6,7 +6,7 @@ library(shiny); library(ggplot2); library(scales)
 shinyServer(function(input, output, session) {
   options(scipen = 999)
   
-  
+output$summary <-  renderText({paste("text to be read", input$argentina)})
   
  
  WBGDP <- read.csv("WB_GDP.csv", header = TRUE)
@@ -15,21 +15,31 @@ shinyServer(function(input, output, session) {
      a <- c("#E5F5F9")
      b <- c("#E5F5F9")
      c <- c("#E5F5F9")
+     d <- c("#E5F5F9")
+     e <- c("#E5F5F9")
     
      
      if (input$argentina) { 
-       a <- c("#75AADB")
+       a <- c("#1f78b4")
      }   
      
      if (input$brazil) { 
-       b <- c("#007600")
+       b <- c("#b2df8a")
      } 
      
      if (input$chile) { 
-       c <- c("#D52B1E")
+       c <- c("#33a02c")
      } 
      
-     Plt <- c(a, b, c)     
+     if (input$mexico) { 
+       d <- c("#fb9a99")
+     }
+     
+     if (input$peru) { 
+       e <- c("#e31a1c")
+     }
+     
+     Plt <- c(a, b, c, d, e)     
  p <-   ggplot(WBGDP, aes(China, GDP, colour = Country, shape = Country, size = 4)) 
  p <- p + labs(title = "Selected Correlations", x = "China GDP in $ Millions", y = "Comparison GDP in $ Milliions")
  p <- p + theme(plot.title = element_text(face = "bold", size = 20))
