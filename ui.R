@@ -9,10 +9,13 @@ shinyUI(pageWithSidebar(
   sidebarPanel( "Select GDP/China Correlation",
     checkboxInput("argentina", label = "Argentina", value = TRUE),
     checkboxInput("brazil", label = "Brazil", value = TRUE),
-    checkboxInput("chile", label = "Chile", value = TRUE)
+    checkboxInput("chile", label = "Chile", value = TRUE),
+    checkboxInput("mexico", label = "Mexico", value = TRUE),
+    checkboxInput("peru", label = "Peru", value = TRUE)
   ),
   mainPanel(
     tabsetPanel(
       tabPanel("How to Use This App", verbatimTextOutput("summary")),
       tabPanel("plot", plotOutput('plot1'))
 ))))
+
