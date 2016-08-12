@@ -39,14 +39,15 @@ output$summary <-  renderText({paste("text to be read", input$argentina)})
        e <- c("#e31a1c")
      }
      
-     Plt <- c(a, b, c, d, e)     
+     Plt <- c(a, b, c, d, e) 
+     Shp <- c(8, 15, 17, 18, 16)
  p <-   ggplot(WBGDP, aes(China, GDP, colour = Country, shape = Country, size = 4)) 
  p <- p + labs(title = "Selected Correlations", x = "China GDP in $ Millions", y = "Comparison GDP in $ Milliions")
  p <- p + theme(plot.title = element_text(face = "bold", size = 20))
  p <- p + theme(axis.title = element_text(face = "bold", size = 16))
- p <- p + geom_point() + scale_color_manual(values = Plt)
+ p <- p + geom_point() + scale_color_manual(values = Plt) + scale_shape_manual(values = Shp)
  p <- p + scale_x_continuous(labels = comma) + scale_y_continuous(labels = comma)
- p <- p + theme(panel.background = element_rect(fill = "#E5F5F9"))
+ p <- p + theme(panel.background = element_rect(fill = "#E5F5F9")) + theme(legend.position = "none")
  p <- p + geom_smooth(method = lm, size = 1, se = FALSE)
  
   print(p)
